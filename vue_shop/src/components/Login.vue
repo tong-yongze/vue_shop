@@ -76,8 +76,9 @@ export default {
   methods: {
     // 点击重置按钮 重置登录表单
     resetLoginForm() {
-      // console.log(this);
-      this.$refs.loginFormRef.resetFields()
+      // console.log(this)  可以打印出 $refs 然后 .对象就可以引用 就是组件的实例
+      // 重置表单先拿到实例对象  给表单定义一个ref
+      this.$refs.loginFormRef.resetFields() //loginFormRef  就是表单的引用对象
     },
     // 登录按钮
     login() {
