@@ -251,7 +251,7 @@ export default {
         }
       )
       if (res.meta.status !== 200) {
-        return this.$message.error('获取参数列表失败')
+        return this.$message.error('获取参数列表失败！')
       }
       console.log(res.data)
       if (this.activeName === 'many') {
