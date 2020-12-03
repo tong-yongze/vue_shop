@@ -178,13 +178,13 @@ export default {
       },
       // 父级分类的列表
       parentCateList: [],
-      // 指定 级联选择器的配置对象
+      // 指定级联选择器的配置对象
       cascaderProps: {
         value: 'cat_id',
         label: 'cat_name',
         children: 'children',
       },
-      // 选中的父级分类的 id数组
+      // 选中的父级分类的Id数组
       selectedKeys: [],
     }
   },
@@ -197,27 +197,28 @@ export default {
       const { data: res } = await this.$http.get('categories', {
         params: this.querInfo,
       })
+
       if (res.meta.status !== 200) {
-        return this.$message.error('获取商品分类失败')
+        return this.$message.error('获取商品分类失败！')
       }
+
       console.log(res.data)
-      // 把数据列表 赋值给 catelist
+      // 把数据列表，赋值给 catelist
       this.catelist = res.data.result
       // 为总数据条数赋值
       this.total = res.data.total
     },
     // 监听 pagesize 改变
     handleSizeChange(newSize) {
-      // 把最新的赋值给 每页显示的数据
       this.querInfo.pagesize = newSize
       this.getCateList()
     },
+    // 监听 pagenum 改变
     handleCurrentChange(newPage) {
-      // 把最新的给当前页码值
       this.querInfo.pagenum = newPage
       this.getCateList()
     },
-    // 点击按钮 展示添加分类的对话框
+    // 点击按钮，展示添加分类的对话框
     showAddCateDialog() {
       // 先获取父级分类的数据列表
       this.getParentCateList()
