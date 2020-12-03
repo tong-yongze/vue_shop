@@ -417,15 +417,18 @@ export default {
         ...this.$refs.treeRef.getHalfCheckedKeys(),
       ]
       // console.log(keys)  打印可以拿到所有选中的权限
-      const idStr = keys.join()
+      const idStr = keys.join(',')
 
       const { data: res } = await this.$http.post(
         `roles/${this.roleId}/rights`,
         { rids: idStr }
       )
       if (res.meta.status !== 200) {
-        return this.$message.error('分配权限失败')
+        return this.$message.error('分配权限失败！')
       }
+      this.$message.success('分配权限成功！')
+      this.getRolesList()
+      this.setRightDialogVisible = false
     },
   },
 }
