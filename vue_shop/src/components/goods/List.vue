@@ -17,13 +17,18 @@
             clearable
             @clear="getGoodList"
           >
-            <el-button slot="append" icon="el-icon-search"></el-button>
+            <el-button
+              slot="append"
+              icon="el-icon-search"
+              @click="getGoodList"
+            ></el-button>
           </el-input>
         </el-col>
         <el-col :span="4">
-          <el-button type="primary" @click="getGoodList">添加商品</el-button>
+          <el-button type="primary" @click="goAddpage">添加商品</el-button>
         </el-col>
       </el-row>
+      <!-- table 表格区域 -->
       <el-table :data="goodsList" border stripe width="95px">
         <el-table-column type="index" label="#"></el-table-column>
         <el-table-column prop="goods_name" label="商品名称"></el-table-column>
@@ -139,6 +144,9 @@ export default {
       }
       this.$message.success('删除商品成功！')
       this.getGoodList()
+    },
+    goAddpage() {
+      this.$router.push('/goods/add')
     },
   },
 }
